@@ -25,7 +25,7 @@ Sent once at power-up, again after `?`, and again when a lost accelerometer is r
 | `boot` | int | Random ID chosen at each power-up. A new value means the Uno restarted. |
 | `up_ms` | int | Milliseconds since power-up |
 | `fw` | string | Firmware version |
-| `acc_model` | string | `ADXL345`, `LIS3DHTR`, `MMA7660` (unsupported) or `none` |
+| `acc_model` | string | `ADXL345`, `LIS3DHTR`, `MMA7660` (coarse, about 2.7° per step) or `none` |
 | `acc_addr` | int | I2C address found (decimal), 0 if none |
 
 ## Record: `reading`
@@ -54,7 +54,7 @@ Sent every second.
 | Flag | Raised when | Gateway treatment |
 | --- | --- | --- |
 | `accel_missing` | No supported accelerometer was found on I2C | Tilt unavailable; monitoring degraded |
-| `accel_unsupported_model` | Only the ±1.5 g MMA7660 was found | Tilt unavailable; swap the module |
+| `accel_unsupported_model` | Reserved; firmware 1.1.0 never sends it | — |
 | `accel_read_failed` | The accelerometer was found but all 20 reads failed this second. Firmware re-detects it. | Tilt unavailable for this reading |
 | `accel_partial` | Some, but not all, of the 20 reads failed | Values usable; quality degraded |
 | `moisture_unstable` | `moist_max − moist_min` > 120 counts. Typical of an unplugged sensor (floating input). | Wetness unavailable for this reading |
