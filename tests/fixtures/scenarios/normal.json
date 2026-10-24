@@ -1,0 +1,111 @@
+{
+ "name": "Normal: dry weather, all stakes calm",
+ "description": "Light rain, soil well below its wet calibration, no movement. Expect monitoring and no exposed households.",
+ "speed": 60,
+ "step_s": 60,
+ "duration_min": 120,
+ "seed": 1,
+ "weather": {
+  "past_hours": 24,
+  "hourly_mm": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0.5,
+   1,
+   0.5,
+   0,
+   0,
+   0,
+   1,
+   1,
+   0.5,
+   0.5,
+   0,
+   0,
+   0,
+   0,
+   0.5,
+   1,
+   1,
+   0.5,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "nodes": {
+  "N01": {
+   "moisture": [
+    [
+     0,
+     330
+    ]
+   ]
+  },
+  "N02": {
+   "moisture": [
+    [
+     0,
+     340
+    ]
+   ]
+  },
+  "N03": {
+   "moisture": [
+    [
+     0,
+     335
+    ]
+   ]
+  }
+ }
+}

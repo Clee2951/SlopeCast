@@ -1,0 +1,126 @@
+{
+ "name": "Data outage: N03 goes silent and the weather source fails",
+ "description": "N01 and N02 wet but still; N03 stops sending at minute 60 and weather fails at minute 90. Expect degraded monitoring with N03 and weather listed as gaps, never 'safe'.",
+ "speed": 60,
+ "step_s": 60,
+ "duration_min": 180,
+ "seed": 5,
+ "weather": {
+  "past_hours": 24,
+  "hourly_mm": [
+   0,
+   0,
+   0.5,
+   1,
+   1,
+   2,
+   2,
+   3,
+   3,
+   2,
+   2,
+   3,
+   4,
+   4,
+   5,
+   5,
+   6,
+   6,
+   5,
+   6,
+   7,
+   8,
+   8,
+   9,
+   10,
+   12,
+   15,
+   18,
+   22,
+   26,
+   30,
+   32,
+   30,
+   26,
+   22,
+   18,
+   15,
+   12,
+   10,
+   8,
+   6,
+   5,
+   4,
+   3,
+   2,
+   2,
+   1,
+   1,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "outage_after_min": 90
+ },
+ "nodes": {
+  "N01": {
+   "moisture": [
+    [
+     0,
+     560
+    ],
+    [
+     180,
+     650
+    ]
+   ]
+  },
+  "N02": {
+   "moisture": [
+    [
+     0,
+     540
+    ],
+    [
+     180,
+     620
+    ]
+   ]
+  },
+  "N03": {
+   "moisture": [
+    [
+     0,
+     400
+    ]
+   ],
+   "dropout_min": [
+    [
+     60,
+     100000
+    ]
+   ]
+  }
+ }
+}

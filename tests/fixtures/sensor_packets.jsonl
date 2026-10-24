@@ -1,0 +1,12 @@
+{"v":1,"type":"hello","node":"N01","boot":1804289383,"up_ms":12,"fw":"1.0.0","acc_model":"ADXL345","acc_addr":83}
+{"v":1,"type":"reading","node":"N01","boot":1804289383,"seq":1,"up_ms":1201,"moist_raw":300,"moist_min":297,"moist_max":304,"ax":0.0000,"ay":0.0000,"az":1.0000,"acc_units":"g","acc_model":"ADXL345","acc_n":20,"fw":"1.0.0","flags":[]}
+{"v":1,"type":"reading","node":"N01","boot":1804289383,"seq":2,"up_ms":2201,"moist_raw":302,"moist_min":299,"moist_max":305,"ax":0.0010,"ay":0.0000,"az":1.0000,"acc_units":"g","acc_model":"ADXL345","acc_n":20,"fw":"1.0.0","flags":[]}
+{"v":1,"type":"reading","node":"N01","boot":1804289383,"seq":3,"up_ms":3201,"moist_raw":301,"moist_min":298,"moist_max":304,"ax":0.0000,"ay":0.0010,"az":1.0000,"acc_units":"g","acc_model":"ADXL345","acc_n":20,"fw":"1.0.0","flags":[]}
+{"v":1,"type":"reading","node":"N01","boot":1804289383,"seq":3,"up_ms":3201,"moist_raw":301,"moist_min":298,"moist_max":304,"ax":0.0000,"ay":0.0010,"az":1.0000,"acc_units":"g","acc_model":"ADXL345","acc_n":20,"fw":"1.0.0","flags":[]}
+ADXL3 init...
+{"v":1,"type":"reading","node":"N01","boot":1804289383,"seq":4,"up_ms":42
+{"v":1,"type":"reading","node":"N01","boot":1804289383,"seq":4,"up_ms":4201,"moist_raw":300,"moist_min":296,"moist_max":303,"ax":null,"ay":null,"az":null,"acc_units":"g","acc_model":"none","acc_n":0,"fw":"1.0.0","flags":["accel_read_failed"]}
+{"v":1,"type":"reading","node":"N01","boot":1804289383,"seq":5,"up_ms":5201,"moist_raw":611,"moist_min":402,"moist_max":890,"ax":0.0000,"ay":0.0000,"az":1.0000,"acc_units":"g","acc_model":"ADXL345","acc_n":20,"fw":"1.0.0","flags":["moisture_unstable"]}
+{"v":1,"type":"hello","node":"N01","boot":846930886,"up_ms":11,"fw":"1.0.0","acc_model":"ADXL345","acc_addr":83}
+{"v":1,"type":"reading","node":"N01","boot":846930886,"seq":1,"up_ms":1201,"moist_raw":305,"moist_min":302,"moist_max":308,"ax":0.0000,"ay":0.0000,"az":1.0000,"acc_units":"g","acc_model":"ADXL345","acc_n":20,"fw":"1.0.0","flags":[]}
+{"v":1,"type":"reading","node":"N01","boot":846930886,"seq":2,"up_ms":2201,"moist_raw":306,"moist_min":303,"moist_max":309,"ax":0.0000,"ay":0.0000,"az":1.0000,"acc_units":"g","acc_model":"ADXL345","acc_n":20,"fw":"1.0.0","flags":[]}

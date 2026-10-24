@@ -1,0 +1,140 @@
+{
+ "name": "Assistance needed: N01 moving, accessible van out of service",
+ "description": "Like escalating but faster, with Team B's wheelchair van removed. Expect the wheelchair household's job to be flagged infeasible.",
+ "speed": 60,
+ "step_s": 60,
+ "duration_min": 150,
+ "seed": 3,
+ "remove_teams": [
+  "T2"
+ ],
+ "weather": {
+  "past_hours": 24,
+  "hourly_mm": [
+   0,
+   0,
+   0.5,
+   1,
+   1,
+   2,
+   2,
+   3,
+   3,
+   2,
+   2,
+   3,
+   4,
+   4,
+   5,
+   5,
+   6,
+   6,
+   5,
+   6,
+   7,
+   8,
+   8,
+   9,
+   10,
+   12,
+   15,
+   18,
+   22,
+   26,
+   30,
+   32,
+   30,
+   26,
+   22,
+   18,
+   15,
+   12,
+   10,
+   8,
+   6,
+   5,
+   4,
+   3,
+   2,
+   2,
+   1,
+   1,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "nodes": {
+  "N01": {
+   "moisture": [
+    [
+     0,
+     500
+    ],
+    [
+     40,
+     700
+    ]
+   ],
+   "tilt_deg": [
+    [
+     0,
+     0
+    ],
+    [
+     60,
+     0.5
+    ],
+    [
+     100,
+     3
+    ],
+    [
+     150,
+     8
+    ]
+   ]
+  },
+  "N02": {
+   "moisture": [
+    [
+     0,
+     420
+    ],
+    [
+     150,
+     600
+    ]
+   ]
+  },
+  "N03": {
+   "moisture": [
+    [
+     0,
+     330
+    ]
+   ]
+  }
+ }
+}
