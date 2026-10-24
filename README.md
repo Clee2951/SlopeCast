@@ -51,7 +51,7 @@ Headless check of a scenario: `uv run python tools/replay.py tests/fixtures/scen
 | --- | --- |
 | Arduino Uno R4 (USB-C) + Grove Base Shield v2 (switch on **5V**) | Laptop by USB |
 | Grove Moisture Sensor | **A0** |
-| Grove 3-axis accelerometer (ADXL345 or LIS3DHTR) | any **I2C** port |
+| Grove 3-axis accelerometer (ADXL345, LIS3DHTR, or the coarser ±1.5 g MMA7660) | any **I2C** port |
 | Printed stake + lid | `hardware/stl/`, notes in `hardware/print-notes.md` |
 
 Upload `firmware/slope_node/slope_node.ino` with the Arduino IDE (board package "Arduino UNO R4 Boards"). Serial Monitor at 115200 should show a `hello` line then one `reading` per second. **Close Serial Monitor before starting the backend**: only one program can hold the port. Format: `docs/serial-protocol.md`.
