@@ -35,6 +35,7 @@ class Settings:
     data_paths: dict                  # name -> Path
     serial_ports: list = field(default_factory=list)   # explicit ports, or ["auto"]
     anthropic_api_key: Optional[str] = None
+    anthropic_workspace_id: Optional[str] = None
     apify_token: Optional[str] = None
     mode: str = "live"                # live | replay
     http_host: str = "127.0.0.1"
@@ -103,6 +104,7 @@ def load_settings(root: Optional[Path] = None, env: Optional[dict] = None) -> Se
         data_paths={k: root / v for k, v in site["data"].items()},
         serial_ports=ports,
         anthropic_api_key=values.get("ANTHROPIC_API_KEY") or None,
+        anthropic_workspace_id=values.get("ANTHROPIC_WORKSPACE_ID") or None,
         apify_token=values.get("APIFY_TOKEN") or None,
         mode=values.get("SLOPECAST_MODE", "live"),
         http_host=values.get("SLOPECAST_HOST", "127.0.0.1"),

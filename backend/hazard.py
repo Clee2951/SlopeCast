@@ -17,6 +17,7 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+import urllib.error
 import urllib.request
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -195,8 +196,16 @@ def rule_view(nodes: dict, weather, zones: dict, rules: dict) -> dict:
 
 
 # ================================================================ layer 2: Claude
-def call_claude_http(api_key: str, model: str, system: str, evidence: dict, max_tokens: int, timeout: float) -> dict:
-    """POST to the Messages API with a forced tool call. Returns the tool input dict."""
+class ClaudeAPIError(RuntimeError):
+    pass
+
+
+def call_claude_http(api_key: str, model: str, system: str, evidence: dict, max_tokens: int, timeout: float,
+                     workspace_id: Optional[str] = None) -> dict:
+    """POST to the Messages API with a forced tool call. Returns the tool input dict.
+
+    Auth: `Authorization: Bearer <key>`. Keys not scoped to a workspace also need the
+    `anthropic-workspace-id` header (set ANTHROPIC_WORKSPACE_ID in .env)."""
     body = {
         "model": model,
         "max_tokens": max_tokens,
@@ -205,10 +214,21 @@ def call_claude_http(api_key: str, model: str, system: str, evidence: dict, max_
         "tool_choice": {"type": "tool", "name": TOOL["name"]},
         "messages": [{"role": "user", "content": "Evidence for the current assessment:\n" + json.dumps(evidence, indent=1)}],
     }
-    req = urllib.request.Request(ANTHROPIC_URL, data=json.dumps(body).encode(), method="POST", headers={
-        "x-api-key": api_key, "anthropic-version": ANTHROPIC_VERSION, "content-type": "application/json"})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        resp = json.loads(r.read().decode())
+    headers = {"Authorization": f"Bearer {api_key}", "anthropic-version": ANTHROPIC_VERSION,
+               "content-type": "application/json"}
+    if workspace_id:
+        headers["anthropic-workspace-id"] = workspace_id
+    req = urllib.request.Request(ANTHROPIC_URL, data=json.dumps(body).encode(), method="POST", headers=headers)
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            resp = json.loads(r.read().decode())
+    except urllib.error.HTTPError as e:              # show the API's own explanation (bad key, workspace, model...)
+        detail = e.read().decode(errors="replace")[:300]
+        try:
+            detail = json.loads(detail)["error"]["message"]
+        except (ValueError, KeyError, TypeError):
+            pass
+        raise ClaudeAPIError(f"HTTP {e.code}: {detail}") from None
     for block in resp.get("content", []):
         if block.get("type") == "tool_use" and block.get("name") == TOOL["name"]:
             return block["input"]
@@ -311,9 +331,9 @@ class HazardEngine:
             return self.call_claude
         if not (self.policy.get("use_claude", True) and self.s.anthropic_api_key):
             return None
-        key = self.s.anthropic_api_key
+        key, ws = self.s.anthropic_api_key, self.s.anthropic_workspace_id
         return lambda system, evidence: call_claude_http(key, self.policy["model"], system, evidence,
-                                                         self.policy.get("max_tokens", 1500), self.policy.get("timeout_s", 30))
+                                                         self.policy.get("max_tokens", 1500), self.policy.get("timeout_s", 30), ws)
 
     def build_evidence(self, features: dict, series: dict, weather, zones: dict, now: datetime):
         fits = {}
