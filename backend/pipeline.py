@@ -22,7 +22,8 @@ from backend import notifications, people, planner
 from backend.hazard import HazardEngine
 from backend.households import import_into_db, load_files, load_from_db
 from backend.schemas import EvacuationPlan, ProgressEvent, to_dict
-from backend.sensors import Gateway, IngestResult, NodeCalibration, compute_features, load_calibration, tilt_from_baseline
+from backend.sensors import (ACCEL_BAD_FLAGS, Gateway, IngestResult, NodeCalibration, compute_features,
+                             load_calibration, still_limit_g, tilt_from_baseline)
 
 
 class Conflict(RuntimeError):
@@ -49,6 +50,10 @@ class Pipeline:
         self.assessment = None
         self.needs = []
         self.events = deque(maxlen=200)
+        self.echo = False                     # also print log lines to the terminal (set by python -m backend)
+        self._invalid_lines = 0
+        self._first_reading = set()
+        self._baseline_wait_logged = {}
         self.calibration_overrides = {}       # replays supply calibration for simulated stakes
         self.session_baselines = {}           # node -> (session_id, g0) when auto baseline is used
         self.window_s, self.stale_after_s = 600.0, 10.0
@@ -59,6 +64,18 @@ class Pipeline:
     # ---------------------------------------------------------------- helpers
     def log(self, msg: str):
         self.events.appendleft({"time_utc": self.clock.now().isoformat(), "msg": msg})
+        if self.echo:
+            self._print(msg)
+
+    @staticmethod
+    def _print(msg: str):
+        print(f"  [{datetime.now().strftime('%H:%M:%S')}] {msg}", flush=True)
+
+    def enable_echo(self):
+        """Print everything logged so far (oldest first), then every new log line."""
+        for e in reversed(list(self.events)):
+            self._print(e["msg"])
+        self.echo = True
 
     def set_time_scale(self, step_s: float):
         """Replays send one reading per step_s simulated seconds; widen windows to match."""
@@ -95,16 +112,33 @@ class Pipeline:
     def _try_session_baseline(self, node_id: str):
         hist = self.history[node_id]
         sess = hist[-1].session_id
-        good = [r for r in hist if r.session_id == sess and r.accel_g is not None and not r.health_flags][:10]
+        good = [r for r in hist if r.session_id == sess and r.accel_g is not None
+                and not (set(r.health_flags) & ACCEL_BAD_FLAGS)]
+        # earliest run of 10 consecutive still readings, so a bump at power-on doesn't block it forever
         if len(good) < 10:
             return None
-        g = tuple(sum(r.accel_g[i] for r in good) / 10 for i in range(3))
-        sd = max(math.sqrt(sum((r.accel_g[i] - g[i]) ** 2 for r in good) / 10) for i in range(3))
-        if sd > 0.02:
-            return None
-        self.session_baselines[node_id] = (sess, g)
-        self.log(f"{node_id}: no saved tilt baseline; using the first 10 still seconds of this session")
-        return self.session_baselines[node_id]
+        best = None                                    # (sd, g) of the steadiest 10 readings so far
+        for start in range(0, len(good) - 9):
+            win = good[start:start + 10]
+            g = tuple(sum(r.accel_g[i] for r in win) / 10 for i in range(3))
+            sd = max(math.sqrt(sum((r.accel_g[i] - g[i]) ** 2 for r in win) / 10) for i in range(3))
+            if best is None or sd < best[0]:
+                best = (sd, g)
+            if sd <= still_limit_g(win[-1].accel_model):
+                self.session_baselines[node_id] = (sess, g)
+                self.log(f"{node_id}: no saved tilt baseline; using the first 10 still seconds of this session")
+                return self.session_baselines[node_id]
+        if len(good) >= 30:
+            # never stay stuck: after 30 s, take the steadiest 10 s and say so
+            self.session_baselines[node_id] = (sess, best[1])
+            self.log(f"{node_id}: stake never sat fully still (movement {best[0]:.3f} g); tilt measured from "
+                     "the steadiest 10 s. Restart the backend with the stake still for a cleaner zero.")
+            return self.session_baselines[node_id]
+        if len(good) in (10, 20) and self._baseline_wait_logged.get(node_id) != (sess, len(good)):
+            self._baseline_wait_logged[node_id] = (sess, len(good))
+            self.log(f"{node_id}: waiting for the stake to sit still for 10 s to set its zero tilt "
+                     f"(movement {best[0]:.3f} g, need under {still_limit_g(good[-1].accel_model):.2f} g)")
+        return None
 
     # ---------------------------------------------------------------- inputs
     def on_line(self, line: str, source: str, simulated: bool = False) -> IngestResult:
@@ -118,6 +152,12 @@ class Pipeline:
             if res.kind == "hello":
                 self.log(f"{res.hello['node']} connected via {source}: firmware {res.hello['fw']}, accelerometer {res.hello['acc_model']}")
                 return
+            if res.kind == "invalid":
+                self._invalid_lines += 1
+                if self._invalid_lines <= 3 or self._invalid_lines % 100 == 0:
+                    self.log(f"ignored a serial line that is not SlopeCast data ({res.detail}). "
+                             "If this repeats, re-upload firmware/slope_node/slope_node.ino")
+                return
             if res.kind != "reading":
                 return
             r = res.reading
@@ -127,6 +167,10 @@ class Pipeline:
             self.db.save_reading(r)
             self.history[r.node_id].append(r)
             self.sources[r.node_id] = {"source": source, "last_seen": r.receipt_time_utc, "simulated": r.simulated}
+            if not r.simulated and r.node_id not in self._first_reading:
+                self._first_reading.add(r.node_id)
+                self.log(f"{r.node_id}: first reading via {source}: moisture raw {r.moisture_raw}, "
+                         f"accel {r.accel_g}, flags {list(r.health_flags) or 'none'}")
             self._update_features(r.node_id)
 
     def _update_features(self, node_id: str):

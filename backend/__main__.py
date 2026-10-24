@@ -77,6 +77,9 @@ def main(argv=None) -> int:
     print(f"  Rescue committee:      {base}/?view=committee&token=committee-demo")
     print(f"  Resident (household H02): {base}/?view=resident&token=resident-h02")
     print(f"  Public dashboard:      {base}/?view=dashboard\n  Ctrl+C to stop.\n")
+    if not scenario:
+        print("  Status messages (also in the dashboard's Event log):")
+        app.pipeline.enable_echo()
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:

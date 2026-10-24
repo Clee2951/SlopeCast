@@ -4,8 +4,8 @@
 //           Grove 3-axis accelerometer on any I2C port. Auto-detected at boot:
 //             ADXL345 (Grove 3-Axis Digital Accelerometer +-16g)  at 0x53 or 0x1D
 //             LIS3DHTR (Grove 3-Axis Digital Accelerometer LIS3DHTR) at 0x19 or 0x18
-//             MMA7660 (Grove +-1.5g) is detected but reported as unsupported: its
-//             ~3 degree steps are too coarse to see slow tilt.
+//             MMA7660 (Grove 3-Axis Digital Accelerometer +-1.5g) at 0x4C. Supported, but coarse:
+//             one step is about 2.7 degrees, so it shows a hand-tilted stake, not slow creep.
 // Output  : newline-delimited JSON over USB serial, 115200 baud, one "reading" per second.
 //           The exact format is in docs/serial-protocol.md. Keep the two in sync.
 // Input   : "?\n" re-sends the "hello" record (the R4 does not reset when the port opens,
@@ -17,7 +17,7 @@
 #include <Wire.h>
 
 #define NODE_ID "N01"          // stable ID; must match config/site.json and config/calibration.json
-#define FW_VERSION "1.0.0"
+#define FW_VERSION "1.1.0"
 #define PROTOCOL_VERSION 1
 
 const int MOIST_PIN = A0;
@@ -99,6 +99,9 @@ void detectAccel() {
   }
   if (present(0x4C)) {
     accelAddr = 0x4C;
+    writeReg(accelAddr, 0x07, 0x00);   // MODE: standby (registers can only be written in standby)
+    writeReg(accelAddr, 0x08, 0x00);   // SR: 120 samples/s
+    writeReg(accelAddr, 0x07, 0x01);   // MODE: active
     accelModel = ACC_MMA7660;
   }
 }
@@ -119,6 +122,22 @@ bool readAccel(float &x, float &y, float &z) {
     y = ((int16_t)(b[2] | (b[3] << 8)) >> 4) * 0.001;
     z = ((int16_t)(b[4] | (b[5] << 8)) >> 4) * 0.001;
     return true;
+  }
+  if (accelModel == ACC_MMA7660) {
+    // XOUT, YOUT, ZOUT: 6-bit two's complement; bit 6 (Alert) means the value was being updated
+    for (uint8_t attempt = 0; attempt < 3; attempt++) {
+      if (!readRegs(accelAddr, 0x00, b, 3)) return false;
+      if ((b[0] | b[1] | b[2]) & 0x40) continue;
+      float v[3];
+      for (uint8_t i = 0; i < 3; i++) {
+        int8_t c = b[i] & 0x3F;
+        if (c & 0x20) c -= 64;
+        v[i] = c / 21.33;                // 21.33 counts per g
+      }
+      x = v[0]; y = v[1]; z = v[2];
+      return true;
+    }
+    return false;
   }
   return false;
 }
@@ -194,8 +213,8 @@ void loop() {
 
   // health flags: explicit, so a fault is never mistaken for a calm slope
   bool fAccMissing = accelModel == ACC_NONE;
-  bool fAccUnsupported = accelModel == ACC_MMA7660;
-  bool fAccRead = (accelModel == ACC_ADXL345 || accelModel == ACC_LIS3DH) && !haveAcc;
+  bool fAccUnsupported = false;      // every detected model is now supported
+  bool fAccRead = accelModel != ACC_NONE && !haveAcc;
   bool fAccPartial = haveAcc && accOk < SAMPLES;
   bool fMoistUnstable = (mMax - mMin) > MOIST_UNSTABLE_SPREAD;
   bool fMoistRail = mAvg >= MOIST_RAIL_HIGH;

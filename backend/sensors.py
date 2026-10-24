@@ -36,6 +36,12 @@ BAUD = 115200
 # flags that make one reading's moisture or tilt unusable (see docs/serial-protocol.md)
 MOISTURE_BAD_FLAGS = {"moisture_unstable", "moisture_rail_high"}
 ACCEL_BAD_FLAGS = {"accel_missing", "accel_unsupported_model", "accel_read_failed"}
+COARSE_ACCEL_MODELS = {"MMA7660"}    # about 2.7 degrees per step: shows a hand tilt, not slow creep
+
+
+def still_limit_g(model) -> float:
+    """Largest per-axis standard deviation (g) that still counts as 'not moving' for this chip."""
+    return 0.05 if model in COARSE_ACCEL_MODELS else 0.02
 KNOWN_FLAGS = MOISTURE_BAD_FLAGS | ACCEL_BAD_FLAGS | {"accel_partial"}
 
 
@@ -345,6 +351,8 @@ def compute_features(readings: Iterable[SensorReading], calibration: Optional[No
         tilt = sum(v for _, v in recent) / len(recent)
         if span_ok:
             tilt_trend = _slope_per_hour(tilts)
+        if acc[-1].accel_model in COARSE_ACCEL_MODELS:
+            info.append("coarse_accelerometer_about_2.7_deg_steps")
         if calibration.downslope_axis:
             vals = [downslope_tilt(r.accel_g, g0, calibration.downslope_axis) for r in acc[-recent_n:]]
             tilt_ds = sum(vals) / len(vals)
@@ -391,10 +399,17 @@ class SerialReader:
                     time.sleep(0.2)
                     ser.reset_input_buffer()          # drop a partial line from before we connected
                     ser.write(b"?\n")                 # ask for a hello (R4 does not reset on open)
+                    quiet = 0                         # seconds in a row with nothing received
                     while not stop.is_set():
                         raw = ser.readline()
                         if not raw:
+                            quiet += 1
+                            if quiet == 5:
+                                self.on_status(f"{self.port} is open but has sent nothing for 5 s. Is the SlopeCast "
+                                               "firmware uploaded, and is the Arduino IDE Serial Monitor closed?")
+                                ser.write(b"?\n")
                             continue
+                        quiet = 0
                         line = raw.decode("utf-8", errors="replace")
                         self.on_result(self.gateway.ingest_line(line, utcnow()))
             except (OSError, serial.SerialException) as e:
@@ -465,7 +480,7 @@ def _calibrate(args) -> int:
             return 1
         g = tuple(sum(r.accel_g[i] for r in good) / len(good) for i in range(3))
         sd = max(math.sqrt(sum((r.accel_g[i] - g[i]) ** 2 for r in good) / len(good)) for i in range(3))
-        if sd > 0.02:
+        if sd > still_limit_g(good[-1].accel_model):
             print(f"Stake was moving (axis std {sd:.3f} g). Hold it still and retry. Not saved.")
             return 1
         if not 0.8 < _norm(g) < 1.2:
