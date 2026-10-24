@@ -1,0 +1,23 @@
+# secrets and local settings
+.env
+
+# runtime data: database, logs, recordings
+var/
+*.db
+*.sqlite3
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+*.egg-info/
+
+# editors and OS
+.DS_Store
+.vscode/
+.idea/
+
+# private data never belongs in Git
+data/private/
