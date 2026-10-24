@@ -1,0 +1,76 @@
+{
+  "version": "uncalibrated",
+  "defaults": {
+    "moisture": {
+      "dry_raw": 300,
+      "wet_raw": 700,
+      "source": "Typical Grove moisture sensor ranges (dry soil about 0-300, humid 300-700). Used only when a node has no calibration; the dashboard labels it."
+    },
+    "auto_tilt_baseline": true,
+    "auto_tilt_baseline_note": "If a live node has no saved tilt baseline, the backend uses the first 10 still seconds after it connects as a session baseline (labelled on screen). Run calibrate --step baseline for a proper one."
+  },
+  "nodes": {
+    "N01": {
+      "accel_model": null,
+      "moisture": {
+        "dry_raw": null,
+        "wet_raw": null,
+        "dry_captured_at": null,
+        "wet_captured_at": null,
+        "soil": "demo tray soil (describe it)",
+        "notes": "Capture with: python -m backend.sensors calibrate --port <port> --step dry (then --step wet)"
+      },
+      "tilt": {
+        "baseline_g": null,
+        "baseline_captured_at": null,
+        "downslope_axis": null,
+        "downslope_captured_at": null,
+        "notes": "Install the stake, then --step baseline. Lean it slightly downslope, --step downslope, then stand it back up."
+      }
+    },
+    "N02": {
+      "accel_model": "ADXL345",
+      "moisture": {
+        "dry_raw": 300,
+        "wet_raw": 700,
+        "soil": "simulated node",
+        "notes": "Simulated stake used in replays and as a filler node."
+      },
+      "tilt": {
+        "baseline_g": [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        "downslope_axis": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "notes": "Simulated upright mounting."
+      }
+    },
+    "N03": {
+      "accel_model": "ADXL345",
+      "moisture": {
+        "dry_raw": 300,
+        "wet_raw": 700,
+        "soil": "simulated node",
+        "notes": "Simulated stake used in replays and as a filler node."
+      },
+      "tilt": {
+        "baseline_g": [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        "downslope_axis": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "notes": "Simulated upright mounting."
+      }
+    }
+  }
+}

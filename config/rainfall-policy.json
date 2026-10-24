@@ -1,0 +1,22 @@
+{
+  "version": "rain-demo-1",
+  "source": "apify",
+  "apify_actor_id": "REPLACE-owner~actor-name",
+  "apify_input": {
+    "latitude": "{lat}",
+    "longitude": "{lon}"
+  },
+  "fallback_source": "open-meteo-direct",
+  "offline_file": "tests/fixtures/weather.json",
+  "refresh_s": 600,
+  "timeout_s": 120,
+  "stale_after_s": 1800,
+  "threshold": {
+    "name": "Generic rainfall intensity-duration threshold (Caine 1980 form, I = 14.82 * D^-0.39, mm/h, D in hours)",
+    "a": 14.82,
+    "b": -0.39,
+    "min_duration_h": 0.167,
+    "max_duration_h": 240,
+    "status": "demonstration only: global curve, not validated for this site"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "site_id": "liugui-demo",
+  "name": "Demo hillside, Liugui District, Kaohsiung (placeholder coordinates)",
+  "timezone": "Asia/Taipei",
+  "utc_offset_hours": 8,
+  "center": [
+    22.995,
+    120.636
+  ],
+  "zoom": 16,
+  "nodes": {
+    "N01": {
+      "lat": 22.9962,
+      "lon": 120.633,
+      "sector": "upper north",
+      "kind": "live",
+      "serial_port": "auto"
+    },
+    "N02": {
+      "lat": 22.995,
+      "lon": 120.6328,
+      "sector": "upper central",
+      "kind": "simulated-if-absent",
+      "serial_port": "auto"
+    },
+    "N03": {
+      "lat": 22.9938,
+      "lon": 120.6331,
+      "sector": "upper south",
+      "kind": "simulated-if-absent",
+      "serial_port": "auto"
+    }
+  },
+  "data": {
+    "households": "data/demo/households.json",
+    "zones": "data/demo/hazard-zones.geojson",
+    "shelters": "data/demo/shelters.json",
+    "resources": "data/demo/resources.json",
+    "users": "data/demo/users.json"
+  },
+  "database": "var/slopecast.db"
+}

@@ -1,0 +1,21 @@
+{
+  "version": "msg-demo-1",
+  "default_language": "en",
+  "templates": {
+    "en": {
+      "leave_by": "SlopeCast ({issuer}): Landslide risk near your home ({zone}). Please leave by {leave_by} and go to {destination}. Bring: {checklist}. {help_line}",
+      "no_deadline": "SlopeCast ({issuer}): Landslide risk near your home ({zone}). Prepare to leave for {destination}. Bring: {checklist}. Wait for further instructions. {help_line}",
+      "help_requested": "Help has been requested for your household; a team has not yet confirmed.",
+      "help_assigned": "{team} has accepted and plans to arrive by {arrival_by}.",
+      "no_help": ""
+    },
+    "zh-Hant": {
+      "leave_by": "SlopeCast（{issuer}）：您家附近有土石流風險（{zone}）。請在 {leave_by} 前離開，前往 {destination}。請攜帶：{checklist}。{help_line}",
+      "no_deadline": "SlopeCast（{issuer}）：您家附近有土石流風險（{zone}）。請準備前往 {destination}。請攜帶：{checklist}。請等候進一步通知。{help_line}",
+      "help_requested": "已為您的家庭申請協助，救援隊尚未確認。",
+      "help_assigned": "{team} 已確認，預計於 {arrival_by} 前抵達。",
+      "no_help": ""
+    }
+  },
+  "issuer": "Village emergency committee (demo)"
+}

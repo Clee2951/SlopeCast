@@ -1,0 +1,34 @@
+{
+  "version": "evac-demo-1",
+  "exposed_likelihoods": [
+    "medium",
+    "high"
+  ],
+  "prep_minutes": {
+    "base": 10,
+    "per_person": 2,
+    "needs_helper": 10,
+    "wheelchair": 15,
+    "per_essential_item": 3
+  },
+  "speeds_km_per_h": {
+    "walk": 3.0,
+    "walk_assisted": 1.5,
+    "drive": 20.0
+  },
+  "road_factor": 1.4,
+  "team_service_minutes": 5,
+  "safety_buffer_minutes": 15,
+  "default_horizon_minutes": {
+    "urgent_review": 60,
+    "elevated": 240,
+    "monitoring": null
+  },
+  "_default_horizon_note": "Used only when there is no validated hazard timing and no operator horizon. It is a demo planning setting, shown on screen as 'policy default'. Set a level to null to disable.",
+  "priority": [
+    "infeasible first",
+    "earliest team-arrival deadline",
+    "wheelchair or helper needed",
+    "likelihood high before medium"
+  ]
+}
