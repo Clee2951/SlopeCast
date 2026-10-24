@@ -1,0 +1,32 @@
+{
+  "_note": "Demo rescue teams. Runtime commitments are stored in the database, not here.",
+  "teams": [
+    {
+      "team_id": "T1",
+      "name": "Team A (village volunteers, car)",
+      "vehicle": "car",
+      "seats": 3,
+      "wheelchair_spaces": 0,
+      "lat": 22.995,
+      "lon": 120.6415
+    },
+    {
+      "team_id": "T2",
+      "name": "Team B (fire brigade, accessible van)",
+      "vehicle": "wheelchair van",
+      "seats": 4,
+      "wheelchair_spaces": 1,
+      "lat": 22.9948,
+      "lon": 120.643
+    },
+    {
+      "team_id": "T3",
+      "name": "Team C (helpers on foot)",
+      "vehicle": "on foot",
+      "seats": 0,
+      "wheelchair_spaces": 0,
+      "lat": 22.9955,
+      "lon": 120.639
+    }
+  ]
+}

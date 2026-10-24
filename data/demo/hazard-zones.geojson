@@ -1,0 +1,209 @@
+{
+ "type": "FeatureCollection",
+ "name": "SlopeCast demo hazard zones",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "zone_id": "Z1",
+    "name": "North gully below N01",
+    "source_nodes": [
+     "N01"
+    ],
+    "severity_if_hit": "debris reaches the north lane houses",
+    "origin": "scenario drawn for the demo, not an official hazard map",
+    "version": "demo-1"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       120.63325,
+       22.99665
+      ],
+      [
+       120.63325,
+       22.99575
+      ],
+      [
+       120.6373,
+       22.99525
+      ],
+      [
+       120.6373,
+       22.99715
+      ],
+      [
+       120.63325,
+       22.99665
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "zone_id": "Z2",
+    "name": "Central slope below N02",
+    "source_nodes": [
+     "N02"
+    ],
+    "severity_if_hit": "debris reaches the central row and the shop",
+    "origin": "scenario drawn for the demo, not an official hazard map",
+    "version": "demo-1"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       120.63305,
+       22.99545
+      ],
+      [
+       120.63305,
+       22.99455
+      ],
+      [
+       120.6372,
+       22.99405
+      ],
+      [
+       120.6372,
+       22.99595
+      ],
+      [
+       120.63305,
+       22.99545
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "zone_id": "Z3",
+    "name": "South spur below N03",
+    "source_nodes": [
+     "N03"
+    ],
+    "severity_if_hit": "debris reaches the south farm buildings",
+    "origin": "scenario drawn for the demo, not an official hazard map",
+    "version": "demo-1"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       120.63335,
+       22.99425
+      ],
+      [
+       120.63335,
+       22.99335
+      ],
+      [
+       120.637,
+       22.99285
+      ],
+      [
+       120.637,
+       22.99475
+      ],
+      [
+       120.63335,
+       22.99425
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "zone_id": "Z4",
+    "name": "Combined failure of north and central slope",
+    "source_nodes": [
+     "N01",
+     "N02"
+    ],
+    "severity_if_hit": "large slide crossing the main road",
+    "origin": "scenario drawn for the demo, not an official hazard map",
+    "version": "demo-1"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       120.635,
+       22.9968
+      ],
+      [
+       120.635,
+       22.9943
+      ],
+      [
+       120.6386,
+       22.9939
+      ],
+      [
+       120.6386,
+       22.9972
+      ],
+      [
+       120.635,
+       22.9968
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "zone_id": "Z5",
+    "name": "Debris flow down the stream channel",
+    "source_nodes": [
+     "N01",
+     "N02",
+     "N03"
+    ],
+    "severity_if_hit": "mud and water along the stream to the bridge",
+    "origin": "scenario drawn for the demo, not an official hazard map",
+    "version": "demo-1"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       120.6372,
+       22.9956
+      ],
+      [
+       120.6372,
+       22.9944
+      ],
+      [
+       120.6399,
+       22.9942
+      ],
+      [
+       120.6399,
+       22.9958
+      ],
+      [
+       120.6372,
+       22.9956
+      ]
+     ]
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+{
+  "_note": "Demo shelters. Positions and capacities are invented.",
+  "shelters": [
+    {
+      "shelter_id": "S1",
+      "name": "Liugui Elementary School hall",
+      "lat": 22.9952,
+      "lon": 120.6423,
+      "capacity": 120,
+      "wheelchair_accessible": true,
+      "power_for_medical_devices": true,
+      "route_status": "open",
+      "route_notes": "main road east, paved"
+    },
+    {
+      "shelter_id": "S2",
+      "name": "Temple meeting hall",
+      "lat": 22.9923,
+      "lon": 120.6402,
+      "capacity": 40,
+      "wheelchair_accessible": false,
+      "power_for_medical_devices": false,
+      "route_status": "open",
+      "route_notes": "stairs at the entrance"
+    },
+    {
+      "shelter_id": "S3",
+      "name": "Community activity center",
+      "lat": 22.9986,
+      "lon": 120.6406,
+      "capacity": 70,
+      "wheelchair_accessible": true,
+      "power_for_medical_devices": true,
+      "route_status": "unknown",
+      "route_notes": "north road crosses the gully; not checked"
+    }
+  ]
+}

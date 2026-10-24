@@ -1,0 +1,1087 @@
+{
+ "_note": "Synthetic people for the SlopeCast demo. Not real residents.",
+ "buildings": [
+  {
+   "building_id": "B01",
+   "lat": 22.994563,
+   "lon": 120.635509,
+   "construction": "brick with timber roof",
+   "built_year": 2006,
+   "history": [],
+   "access_notes": "narrow lane, no van access"
+  },
+  {
+   "building_id": "B02",
+   "lat": 22.995839,
+   "lon": 120.63514,
+   "construction": "concrete block",
+   "built_year": 1990,
+   "history": [
+    {
+     "fact": "cracked retaining wall after 2009 typhoon",
+     "source": "demo: invented for illustration",
+     "verified": null
+    }
+   ],
+   "access_notes": null
+  },
+  {
+   "building_id": "B03",
+   "lat": 22.99539,
+   "lon": 120.636519,
+   "construction": "brick with timber roof",
+   "built_year": 1990,
+   "history": [
+    {
+     "fact": "cracked retaining wall after 2009 typhoon",
+     "source": "demo: invented for illustration",
+     "verified": null
+    }
+   ],
+   "access_notes": null
+  },
+  {
+   "building_id": "B04",
+   "lat": 22.993526,
+   "lon": 120.637185,
+   "construction": "brick with timber roof",
+   "built_year": 2006,
+   "history": [],
+   "access_notes": "narrow lane, no van access"
+  },
+  {
+   "building_id": "B05",
+   "lat": 22.993446,
+   "lon": 120.636838,
+   "construction": "concrete block",
+   "built_year": 2015,
+   "history": [
+    {
+     "fact": "cracked retaining wall after 2009 typhoon",
+     "source": "demo: invented for illustration",
+     "verified": null
+    }
+   ],
+   "access_notes": "narrow lane, no van access"
+  },
+  {
+   "building_id": "B06",
+   "lat": 22.993572,
+   "lon": 120.635226,
+   "construction": "brick",
+   "built_year": 1975,
+   "history": [],
+   "access_notes": null
+  },
+  {
+   "building_id": "B07",
+   "lat": 22.994956,
+   "lon": 120.638686,
+   "construction": "steel frame",
+   "built_year": 1982,
+   "history": [
+    {
+     "fact": "cracked retaining wall after 2009 typhoon",
+     "source": "demo: invented for illustration",
+     "verified": null
+    }
+   ],
+   "access_notes": "steep footpath only"
+  },
+  {
+   "building_id": "B08",
+   "lat": 22.993783,
+   "lon": 120.635849,
+   "construction": "traditional timber",
+   "built_year": 1990,
+   "history": [
+    {
+     "fact": "cracked retaining wall after 2009 typhoon",
+     "source": "demo: invented for illustration",
+     "verified": null
+    }
+   ],
+   "access_notes": null
+  },
+  {
+   "building_id": "B09",
+   "lat": 22.995747,
+   "lon": 120.639254,
+   "construction": "steel frame",
+   "built_year": 1975,
+   "history": [
+    {
+     "fact": "cracked retaining wall after 2009 typhoon",
+     "source": "demo: invented for illustration",
+     "verified": null
+    }
+   ],
+   "access_notes": null
+  },
+  {
+   "building_id": "B10",
+   "lat": 22.997107,
+   "lon": 120.635019,
+   "construction": "brick with timber roof",
+   "built_year": 1998,
+   "history": [],
+   "access_notes": "steep footpath only"
+  },
+  {
+   "building_id": "B11",
+   "lat": 22.996648,
+   "lon": 120.636161,
+   "construction": "brick with timber roof",
+   "built_year": 1990,
+   "history": [],
+   "access_notes": null
+  },
+  {
+   "building_id": "B12",
+   "lat": 22.993863,
+   "lon": 120.635354,
+   "construction": "brick with timber roof",
+   "built_year": 1998,
+   "history": [
+    {
+     "fact": "cracked retaining wall after 2009 typhoon",
+     "source": "demo: invented for illustration",
+     "verified": null
+    }
+   ],
+   "access_notes": "steep footpath only"
+  },
+  {
+   "building_id": "B13",
+   "lat": 22.994503,
+   "lon": 120.638636,
+   "construction": "traditional timber",
+   "built_year": 1968,
+   "history": [],
+   "access_notes": null
+  },
+  {
+   "building_id": "B14",
+   "lat": 22.994005,
+   "lon": 120.637534,
+   "construction": "concrete block",
+   "built_year": 1975,
+   "history": [
+    {
+     "fact": "cracked retaining wall after 2009 typhoon",
+     "source": "demo: invented for illustration",
+     "verified": null
+    }
+   ],
+   "access_notes": "steep footpath only"
+  },
+  {
+   "building_id": "B15",
+   "lat": 22.995792,
+   "lon": 120.63655,
+   "construction": "traditional timber",
+   "built_year": 1968,
+   "history": [],
+   "access_notes": null
+  },
+  {
+   "building_id": "B16",
+   "lat": 22.995436,
+   "lon": 120.635095,
+   "construction": "reinforced concrete",
+   "built_year": 2006,
+   "history": [],
+   "access_notes": null
+  },
+  {
+   "building_id": "B17",
+   "lat": 22.993532,
+   "lon": 120.635768,
+   "construction": "steel frame",
+   "built_year": 1990,
+   "history": [
+    {
+     "fact": "cracked retaining wall after 2009 typhoon",
+     "source": "demo: invented for illustration",
+     "verified": null
+    }
+   ],
+   "access_notes": "steep footpath only"
+  },
+  {
+   "building_id": "B18",
+   "lat": 22.995954,
+   "lon": 120.63681,
+   "construction": "brick",
+   "built_year": 2015,
+   "history": [],
+   "access_notes": null
+  },
+  {
+   "building_id": "B19",
+   "lat": 22.994525,
+   "lon": 120.637552,
+   "construction": "brick with timber roof",
+   "built_year": 1982,
+   "history": [],
+   "access_notes": "narrow lane, no van access"
+  },
+  {
+   "building_id": "B20",
+   "lat": 22.995067,
+   "lon": 120.636209,
+   "construction": "concrete block",
+   "built_year": 2015,
+   "history": [
+    {
+     "fact": "cracked retaining wall after 2009 typhoon",
+     "source": "demo: invented for illustration",
+     "verified": null
+    }
+   ],
+   "access_notes": null
+  },
+  {
+   "building_id": "B21",
+   "lat": 22.996398,
+   "lon": 120.638085,
+   "construction": "steel frame",
+   "built_year": 1998,
+   "history": [],
+   "access_notes": "narrow lane, no van access"
+  },
+  {
+   "building_id": "B22",
+   "lat": 22.994252,
+   "lon": 120.6375,
+   "construction": "steel frame",
+   "built_year": 1998,
+   "history": [],
+   "access_notes": null
+  }
+ ],
+ "households": [
+  {
+   "household_id": "H01",
+   "building_id": "B01",
+   "name": "Chen household",
+   "size": 2,
+   "language": "en",
+   "contact": {
+    "channel": "sms",
+    "verified": false
+   }
+  },
+  {
+   "household_id": "H02",
+   "building_id": "B02",
+   "name": "Lin household",
+   "size": 4,
+   "language": "zh-Hant",
+   "contact": {
+    "channel": "door knock",
+    "verified": false
+   }
+  },
+  {
+   "household_id": "H03",
+   "building_id": "B03",
+   "name": "Huang household",
+   "size": 1,
+   "language": "zh-Hant",
+   "contact": {
+    "channel": "door knock",
+    "verified": false
+   }
+  },
+  {
+   "household_id": "H04",
+   "building_id": "B04",
+   "name": "Chang household",
+   "size": 4,
+   "language": "zh-Hant",
+   "contact": {
+    "channel": "sms",
+    "verified": false
+   }
+  },
+  {
+   "household_id": "H05",
+   "building_id": "B05",
+   "name": "Lee household",
+   "size": 1,
+   "language": "zh-Hant",
+   "contact": {
+    "channel": "phone call",
+    "verified": false
+   }
+  },
+  {
+   "household_id": "H06",
+   "building_id": "B05",
+   "name": "Wang household",
+   "size": 2,
+   "language": "zh-Hant",
+   "contact": {
+    "channel": "door knock",
+    "verified": false
+   }
+  },
+  {
+   "household_id": "H07",
+   "building_id": "B06",
+   "name": "Wu household",
+   "size": 2,
+   "language": "zh-Hant",
+   "contact": {
+    "channel": "sms",
+    "verified": false
+   }
+  },
+  {
+   "household_id": "H08",
+   "building_id": "B07",
+   "name": "Liu household",
+   "size": 2,
+   "language": "en",
+   "contact": {
+    "channel": "door knock",
+    "verified": false
+   }
+  },
+  {
+   "household_id": "H09",
+   "building_id": "B08",
+   "name": "Tsai household",
+   "size": 2,
+   "language": "zh-Hant",
+   "contact": {
+    "channel": "sms",
+    "verified": false
+   }
+  },
+  {
+   "household_id": "H10",
+   "building_id": "B09",
+   "name": "Yang household",
+   "size": 2,
+   "language": "en",
+   "contact": {
+    "channel": "sms",
+    "verified": false
+   }
+  },
+  {
+   "household_id": "H11",
+   "building_id": "B10",
+   "name": "Hsu household",
+   "size": 3,
+   "language": "zh-Hant",
+   "contact": {
+    "channel": "sms",
+    "verified": false
+   }
+  },
+  {
+   "household_id": "H12",
+   "building_id": "B11",
+   "name": "Cheng household",
+   "size": 3,
+   "language": "zh-Hant",
+   "contact": {
+    "channel": "sms",
+    "verified": false
+   }
+  },
+  {
+   "household_id": "H13",
+   "building_id": "B12",
+   "name": "Hsieh household",
+   "size": 2,
+   "language": "zh-Hant",
+   "contact": {
+    "channel": "sms",
+    "verified": false
+   }
+  },
+  {
+   "household_id": "H14",
+   "building_id": "B12",
+   "name": "Kuo household",
+   "size": 2,
+   "language": "en",
+   "contact": {
+    "channel": "sms",
+    "verified": false
+   }
+  },
+  {
+   "household_id": "H15",
+   "building_id": "B13",
+   "name": "Hung household",
+   "size": 5,
+   "language": "zh-Hant",
+   "contact": {
+    "channel": "phone call",
+    "verified": false
+   }
+  },
+  {
+   "household_id": "H16",
+   "building_id": "B14",
+   "name": "Tseng household",
+   "size": 2,
+   "language": "zh-Hant",
+   "contact": {
+    "channel": "door knock",
+    "verified": false
+   }
+  },
+  {
+   "household_id": "H17",
+   "building_id": "B15",
+   "name": "Chiu household",
+   "size": 3,
+   "language": "zh-Hant",
+   "contact": {
+    "channel": "phone call",
+    "verified": false
+   }
+  },
+  {
+   "household_id": "H18",
+   "building_id": "B16",
+   "name": "Liao household",
+   "size": 2,
+   "language": "zh-Hant",
+   "contact": {
+    "channel": "sms",
+    "verified": false
+   }
+  },
+  {
+   "household_id": "H19",
+   "building_id": "B17",
+   "name": "Lai household",
+   "size": 2,
+   "language": "en",
+   "contact": {
+    "channel": "door knock",
+    "verified": false
+   }
+  },
+  {
+   "household_id": "H20",
+   "building_id": "B18",
+   "name": "Chou household",
+   "size": 1,
+   "language": "zh-Hant",
+   "contact": {
+    "channel": "sms",
+    "verified": false
+   }
+  },
+  {
+   "household_id": "H21",
+   "building_id": "B19",
+   "name": "Su household",
+   "size": 5,
+   "language": "zh-Hant",
+   "contact": {
+    "channel": "sms",
+    "verified": false
+   }
+  },
+  {
+   "household_id": "H22",
+   "building_id": "B20",
+   "name": "Yeh household",
+   "size": 3,
+   "language": "zh-Hant",
+   "contact": {
+    "channel": "sms",
+    "verified": false
+   }
+  },
+  {
+   "household_id": "H23",
+   "building_id": "B21",
+   "name": "Chen household",
+   "size": 5,
+   "language": "zh-Hant",
+   "contact": {
+    "channel": "door knock",
+    "verified": false
+   }
+  },
+  {
+   "household_id": "H24",
+   "building_id": "B22",
+   "name": "Lin household",
+   "size": 4,
+   "language": "zh-Hant",
+   "contact": {
+    "channel": "phone call",
+    "verified": false
+   }
+  }
+ ],
+ "people": [
+  {
+   "person_id": "P001",
+   "household_id": "H01",
+   "age_band": "0-12",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P002",
+   "household_id": "H01",
+   "age_band": "13-17",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P003",
+   "household_id": "H02",
+   "age_band": "80+",
+   "mobility": "wheelchair",
+   "stated_needs": [
+    "wheelchair-accessible vehicle"
+   ],
+   "essentials": [
+    "daily medication"
+   ]
+  },
+  {
+   "person_id": "P004",
+   "household_id": "H02",
+   "age_band": "80+",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": [
+    "daily medication"
+   ]
+  },
+  {
+   "person_id": "P005",
+   "household_id": "H02",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P006",
+   "household_id": "H02",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P007",
+   "household_id": "H03",
+   "age_band": "65-79",
+   "mobility": "needs_helper",
+   "stated_needs": [
+    "helper to walk to the vehicle"
+   ],
+   "essentials": []
+  },
+  {
+   "person_id": "P008",
+   "household_id": "H04",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P009",
+   "household_id": "H04",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P010",
+   "household_id": "H04",
+   "age_band": "0-12",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P011",
+   "household_id": "H04",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P012",
+   "household_id": "H05",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P013",
+   "household_id": "H06",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P014",
+   "household_id": "H06",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P015",
+   "household_id": "H07",
+   "age_band": "65-79",
+   "mobility": "walks",
+   "stated_needs": [
+    "power for oxygen at the shelter"
+   ],
+   "essentials": [
+    "oxygen concentrator"
+   ]
+  },
+  {
+   "person_id": "P016",
+   "household_id": "H07",
+   "age_band": "80+",
+   "mobility": "wheelchair",
+   "stated_needs": [
+    "wheelchair-accessible vehicle"
+   ],
+   "essentials": [
+    "daily medication"
+   ]
+  },
+  {
+   "person_id": "P017",
+   "household_id": "H08",
+   "age_band": "65-79",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P018",
+   "household_id": "H08",
+   "age_band": "80+",
+   "mobility": "needs_helper",
+   "stated_needs": [
+    "helper to walk to the vehicle"
+   ],
+   "essentials": [
+    "daily medication"
+   ]
+  },
+  {
+   "person_id": "P019",
+   "household_id": "H09",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P020",
+   "household_id": "H09",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P021",
+   "household_id": "H10",
+   "age_band": "0-12",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P022",
+   "household_id": "H10",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P023",
+   "household_id": "H11",
+   "age_band": "80+",
+   "mobility": "needs_helper",
+   "stated_needs": [
+    "helper to walk to the vehicle"
+   ],
+   "essentials": []
+  },
+  {
+   "person_id": "P024",
+   "household_id": "H11",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P025",
+   "household_id": "H11",
+   "age_band": "13-17",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P026",
+   "household_id": "H12",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P027",
+   "household_id": "H12",
+   "age_band": "65-79",
+   "mobility": "needs_helper",
+   "stated_needs": [
+    "helper to walk to the vehicle"
+   ],
+   "essentials": []
+  },
+  {
+   "person_id": "P028",
+   "household_id": "H12",
+   "age_band": "80+",
+   "mobility": "needs_helper",
+   "stated_needs": [
+    "helper to walk to the vehicle"
+   ],
+   "essentials": [
+    "daily medication"
+   ]
+  },
+  {
+   "person_id": "P029",
+   "household_id": "H13",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P030",
+   "household_id": "H13",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P031",
+   "household_id": "H14",
+   "age_band": "80+",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P032",
+   "household_id": "H14",
+   "age_band": "13-17",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P033",
+   "household_id": "H15",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P034",
+   "household_id": "H15",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P035",
+   "household_id": "H15",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P036",
+   "household_id": "H15",
+   "age_band": "65-79",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P037",
+   "household_id": "H15",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P038",
+   "household_id": "H16",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P039",
+   "household_id": "H16",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P040",
+   "household_id": "H17",
+   "age_band": "13-17",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P041",
+   "household_id": "H17",
+   "age_band": "65-79",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P042",
+   "household_id": "H17",
+   "age_band": "65-79",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P043",
+   "household_id": "H18",
+   "age_band": "13-17",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P044",
+   "household_id": "H18",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P045",
+   "household_id": "H19",
+   "age_band": "13-17",
+   "mobility": "walks",
+   "stated_needs": [
+    "power for oxygen at the shelter"
+   ],
+   "essentials": [
+    "oxygen concentrator"
+   ]
+  },
+  {
+   "person_id": "P046",
+   "household_id": "H19",
+   "age_band": "80+",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": [
+    "daily medication"
+   ]
+  },
+  {
+   "person_id": "P047",
+   "household_id": "H20",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P048",
+   "household_id": "H21",
+   "age_band": "65-79",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P049",
+   "household_id": "H21",
+   "age_band": "65-79",
+   "mobility": "wheelchair",
+   "stated_needs": [
+    "wheelchair-accessible vehicle"
+   ],
+   "essentials": []
+  },
+  {
+   "person_id": "P050",
+   "household_id": "H21",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P051",
+   "household_id": "H21",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P052",
+   "household_id": "H21",
+   "age_band": "13-17",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P053",
+   "household_id": "H22",
+   "age_band": "13-17",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P054",
+   "household_id": "H22",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P055",
+   "household_id": "H22",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P056",
+   "household_id": "H23",
+   "age_band": "0-12",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P057",
+   "household_id": "H23",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [
+    "power for oxygen at the shelter"
+   ],
+   "essentials": [
+    "oxygen concentrator"
+   ]
+  },
+  {
+   "person_id": "P058",
+   "household_id": "H23",
+   "age_band": "0-12",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P059",
+   "household_id": "H23",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [
+    "power for oxygen at the shelter"
+   ],
+   "essentials": [
+    "oxygen concentrator"
+   ]
+  },
+  {
+   "person_id": "P060",
+   "household_id": "H23",
+   "age_band": "0-12",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P061",
+   "household_id": "H24",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P062",
+   "household_id": "H24",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P063",
+   "household_id": "H24",
+   "age_band": "13-17",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  },
+  {
+   "person_id": "P064",
+   "household_id": "H24",
+   "age_band": "18-64",
+   "mobility": "walks",
+   "stated_needs": [],
+   "essentials": []
+  }
+ ]
+}

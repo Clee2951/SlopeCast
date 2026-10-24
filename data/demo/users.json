@@ -1,0 +1,159 @@
+{
+  "_note": "Demo sign-in tokens for a localhost demo only. Not a secure login system.",
+  "users": [
+    {
+      "token": "operator-demo",
+      "role": "operator",
+      "name": "Village chief (operator)"
+    },
+    {
+      "token": "committee-demo",
+      "role": "committee",
+      "name": "Rescue committee"
+    },
+    {
+      "token": "resident-h01",
+      "role": "resident",
+      "household_id": "H01",
+      "name": "Chen household"
+    },
+    {
+      "token": "resident-h02",
+      "role": "resident",
+      "household_id": "H02",
+      "name": "Lin household"
+    },
+    {
+      "token": "resident-h03",
+      "role": "resident",
+      "household_id": "H03",
+      "name": "Huang household"
+    },
+    {
+      "token": "resident-h04",
+      "role": "resident",
+      "household_id": "H04",
+      "name": "Chang household"
+    },
+    {
+      "token": "resident-h05",
+      "role": "resident",
+      "household_id": "H05",
+      "name": "Lee household"
+    },
+    {
+      "token": "resident-h06",
+      "role": "resident",
+      "household_id": "H06",
+      "name": "Wang household"
+    },
+    {
+      "token": "resident-h07",
+      "role": "resident",
+      "household_id": "H07",
+      "name": "Wu household"
+    },
+    {
+      "token": "resident-h08",
+      "role": "resident",
+      "household_id": "H08",
+      "name": "Liu household"
+    },
+    {
+      "token": "resident-h09",
+      "role": "resident",
+      "household_id": "H09",
+      "name": "Tsai household"
+    },
+    {
+      "token": "resident-h10",
+      "role": "resident",
+      "household_id": "H10",
+      "name": "Yang household"
+    },
+    {
+      "token": "resident-h11",
+      "role": "resident",
+      "household_id": "H11",
+      "name": "Hsu household"
+    },
+    {
+      "token": "resident-h12",
+      "role": "resident",
+      "household_id": "H12",
+      "name": "Cheng household"
+    },
+    {
+      "token": "resident-h13",
+      "role": "resident",
+      "household_id": "H13",
+      "name": "Hsieh household"
+    },
+    {
+      "token": "resident-h14",
+      "role": "resident",
+      "household_id": "H14",
+      "name": "Kuo household"
+    },
+    {
+      "token": "resident-h15",
+      "role": "resident",
+      "household_id": "H15",
+      "name": "Hung household"
+    },
+    {
+      "token": "resident-h16",
+      "role": "resident",
+      "household_id": "H16",
+      "name": "Tseng household"
+    },
+    {
+      "token": "resident-h17",
+      "role": "resident",
+      "household_id": "H17",
+      "name": "Chiu household"
+    },
+    {
+      "token": "resident-h18",
+      "role": "resident",
+      "household_id": "H18",
+      "name": "Liao household"
+    },
+    {
+      "token": "resident-h19",
+      "role": "resident",
+      "household_id": "H19",
+      "name": "Lai household"
+    },
+    {
+      "token": "resident-h20",
+      "role": "resident",
+      "household_id": "H20",
+      "name": "Chou household"
+    },
+    {
+      "token": "resident-h21",
+      "role": "resident",
+      "household_id": "H21",
+      "name": "Su household"
+    },
+    {
+      "token": "resident-h22",
+      "role": "resident",
+      "household_id": "H22",
+      "name": "Yeh household"
+    },
+    {
+      "token": "resident-h23",
+      "role": "resident",
+      "household_id": "H23",
+      "name": "Chen household"
+    },
+    {
+      "token": "resident-h24",
+      "role": "resident",
+      "household_id": "H24",
+      "name": "Lin household"
+    }
+  ]
+}
