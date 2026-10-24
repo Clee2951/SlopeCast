@@ -70,7 +70,7 @@
     d.nodes.forEach((n) => {
       const c = ST_COLOR[n.status] || "#9a9891";
       L.marker([n.lat, n.lon], { icon: L.divIcon({ className: "", html: `<div style="color:${c};font-size:22px;line-height:22px;text-shadow:0 0 3px #fff">&#9650;</div><div style="font-weight:700;font-size:11px;text-shadow:0 0 3px #fff">${SC.esc(n.node_id)}${n.simulated ? "*" : ""}</div>` }) })
-        .bindTooltip(`<b>${SC.esc(n.node_id)}</b> ${SC.esc(n.sector)} (${SC.esc(n.status)})<br>tilt ${SC.num(n.tilt_deg, 2)} deg, trend ${SC.num(n.tilt_trend_deg_per_h)} deg/h<br>wetness ${SC.num(n.wetness_index, 2)}<br>${SC.esc(n.source || "no source")}`).addTo(layer);
+        .bindTooltip(`<b>${SC.esc(n.node_id)}</b> ${SC.esc(n.sector)} (${SC.esc(n.status)})<br>tilt ${SC.num(n.tilt_deg, 2)} deg, trend ${SC.num(n.tilt_trend_deg_per_h)} deg/h<br>wetness ${SC.num(n.wetness_index, 2)}`).addTo(layer);
       bounds.push([n.lat, n.lon]);
     });
     if (!fitted && bounds.length) { map.fitBounds(bounds, { padding: [20, 20] }); fitted = true; }
@@ -113,9 +113,7 @@
       <div class="stake"><div class="id"><span class="dot st-${SC.esc(n.status)}"></span>${SC.esc(n.node_id)} <span class="muted small">${SC.esc(n.sector)}</span></div>
         <div class="kv small"><span>tilt</span><span class="mono">${SC.num(n.tilt_deg, 2)}&deg;</span>
         <span>trend</span><span class="mono">${SC.num(n.tilt_trend_deg_per_h)} &deg;/h</span>
-        <span>wetness</span><span class="mono">${SC.num(n.wetness_index, 2)} <span class="muted">(raw ${SC.num(n.moisture_raw, 0)})</span></span>
-        <span>source</span><span>${SC.esc(n.simulated ? "simulated" : n.source || "none")}</span></div>
-        ${n.reasons.filter((r) => !r.startsWith("info:window")).length ? `<div class="muted small" title="${SC.esc(n.reasons.join("\n"))}">${SC.esc(n.reasons.filter((r) => !r.startsWith("info:window")).slice(0, 2).map((r) => r.replace(/^info:/, "").replace(/_/g, " ")).join(", "))}</div>` : ""}
+        <span>wetness</span><span class="mono">${SC.num(n.wetness_index, 2)}</span></div>
       </div>`).join("");
   }
   function weather(d) {
@@ -126,10 +124,8 @@
     el.innerHTML = `<div class="kv"><span>past 24 h</span><span class="mono">${SC.num(w.rain_24h_mm)} mm</span>
       <span>next 24 h</span><span class="mono">${SC.num(w.forecast_24h_mm)} mm</span>
       <span>peak</span><span class="mono">${SC.num(w.peak_mm_per_h)} mm/h</span>
-      <span>threshold</span><span>${w.threshold_crossing_utc ? "rain threshold crossed " + SC.local(w.threshold_crossing_utc, true) + " (not a landslide time)" : "not crossed in forecast"}</span>
-      <span>source</span><span class="small">${SC.esc(w.source.split(" (")[0])}${w.stale ? ' <b style="color:var(--bad)">STALE</b>' : ""}${w.simulated ? " (simulated)" : ""}</span></div>
-      <div class="rainbars" title="hourly rainfall, past (dark) and forecast (light)">${hrs.map((h, i) => `<div class="${h.kind === "forecast" ? "fc" : ""} ${i === nowIdx ? "now" : ""}" style="height:${((h.mm || 0) / max) * 100}%" title="${SC.local(h.time_utc, true)}: ${h.mm === null ? "missing" : h.mm + " mm"}"></div>`).join("")}</div>
-      ${w.error ? `<div class="muted small">${SC.esc(w.error)}</div>` : ""}`;
+      <span>threshold</span><span>${w.threshold_crossing_utc ? "rain threshold crossed " + SC.local(w.threshold_crossing_utc, true) + " (not a landslide time)" : "not crossed in forecast"}</span></div>
+      <div class="rainbars" title="hourly rainfall, past (dark) and forecast (light)">${hrs.map((h, i) => `<div class="${h.kind === "forecast" ? "fc" : ""} ${i === nowIdx ? "now" : ""}" style="height:${((h.mm || 0) / max) * 100}%" title="${SC.local(h.time_utc, true)}: ${h.mm === null ? "missing" : h.mm + " mm"}"></div>`).join("")}</div>`;
   }
   function assess(d) {
     const a = d.assessment, el = document.getElementById("assess");
