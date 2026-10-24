@@ -1,0 +1,85 @@
+:root {
+  --bg: #f5f4ef; --panel: #ffffff; --ink: #1d1d1b; --muted: #6a6964; --line: #e2e0d8;
+  --ok: #2f7d4f; --warn: #b7791f; --bad: #b3261e; --gray: #9a9891; --accent: #2a6fb0;
+  --low: #e9e6dc; --medium: #f3b74a; --high: #d9483b; --exposed: #d9483b; --safe: #6f8f73;
+  --monitoring: #2f7d4f; --elevated: #c27d0e; --urgent_review: #b3261e;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #141413; --panel: #1f1f1d; --ink: #ecebe6; --muted: #a09f99; --line: #34332f; --low: #3a3934; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+.mono { font-variant-numeric: tabular-nums; }
+.muted { color: var(--muted); }
+.pad { padding: 16px; }
+.hidden { display: none !important; }
+.topbar { display: flex; align-items: center; gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--line); background: var(--panel); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; }
+.brand { font-weight: 700; font-size: 17px; letter-spacing: .02em; }
+.spacer { flex: 1; }
+nav a { margin-left: 4px; padding: 5px 10px; border-radius: 6px; color: var(--ink); text-decoration: none; border: 1px solid var(--line); }
+nav a.active { background: var(--ink); color: var(--panel); }
+.badge { padding: 3px 9px; border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: .04em; background: var(--line); }
+.badge.live { background: #e7f3ec; color: var(--ok); }
+.badge.replay { background: #fdf0d8; color: #8a5a00; }
+.offline { background: var(--bad); color: #fff; padding: 6px 16px; }
+
+.banner { display: flex; gap: 16px; align-items: center; padding: 14px 16px; color: #fff; flex-wrap: wrap; }
+.banner .level { font-size: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; }
+.banner .summary { flex: 1; min-width: 260px; }
+.banner .countdown { text-align: right; }
+.banner .countdown .big { font-size: 26px; font-weight: 700; }
+.banner small { opacity: .9; }
+
+.grid { display: grid; grid-template-columns: minmax(0, 3fr) minmax(300px, 2fr); gap: 12px; padding: 12px 16px; }
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+.card h2 { margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+#map { height: 520px; border-radius: 8px; overflow: hidden; background: #e8eadf; }
+.legend { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; font-size: 12px; color: var(--muted); }
+.legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 4px; vertical-align: -2px; }
+.stack > * + * { margin-top: 12px; }
+
+.stakes { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
+.stake { border: 1px solid var(--line); border-radius: 8px; padding: 8px; }
+.stake .id { font-weight: 700; }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: 0; }
+.st-ok { background: var(--ok); } .st-degraded { background: var(--warn); } .st-unavailable, .st-no-data { background: var(--gray); }
+.kv { display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; font-size: 13px; }
+.kv > span:nth-child(odd) { color: var(--muted); }
+.rainbars { display: flex; align-items: flex-end; gap: 1px; height: 60px; margin-top: 6px; }
+.rainbars div { flex: 1; background: var(--accent); opacity: .5; min-height: 1px; }
+.rainbars div.fc { opacity: .9; background: #6aa0d8; }
+.rainbars div.now { outline: 1px solid var(--ink); }
+ul.tight { margin: 4px 0; padding-left: 18px; }
+
+.planbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 0 16px 8px; }
+.chip { padding: 3px 9px; border-radius: 999px; background: var(--panel); border: 1px solid var(--line); font-size: 12px; }
+.chip b { font-variant-numeric: tabular-nums; }
+button, .btn { font: inherit; padding: 6px 12px; border-radius: 7px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); cursor: pointer; text-decoration: none; }
+button.primary { background: var(--ink); color: var(--panel); border-color: var(--ink); }
+button:disabled { opacity: .45; cursor: default; }
+input[type=number] { width: 80px; font: inherit; padding: 5px 6px; border-radius: 6px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); }
+
+.tablewrap { padding: 0 16px 12px; overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+th, td { padding: 7px 9px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; font-size: 13px; }
+th { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); background: var(--bg); cursor: pointer; white-space: nowrap; }
+tr.infeasible td { background: rgba(179, 38, 30, .08); }
+.lk { padding: 1px 7px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+.lk-high { background: var(--high); color: #fff; } .lk-medium { background: var(--medium); color: #3a2a00; } .lk-low { background: var(--low); }
+.problems { color: var(--bad); font-size: 12px; }
+.small { font-size: 12px; }
+.log { max-height: 220px; overflow: auto; font-size: 12px; font-family: ui-monospace, Menlo, monospace; }
+.log div { padding: 2px 0; border-bottom: 1px dashed var(--line); }
+
+.resident { max-width: 620px; margin: 24px auto; padding: 0 16px; }
+.resident .card { padding: 20px; }
+.resident .leave { font-size: 44px; font-weight: 800; margin: 6px 0; font-variant-numeric: tabular-nums; }
+.resident .big { font-size: 20px; }
+.resident ul { font-size: 18px; }
+.resident .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+.resident .actions button { font-size: 17px; padding: 12px 18px; }
+.ok-text { color: var(--ok); font-weight: 600; }
+
+.svgmap text { font: 11px system-ui, sans-serif; fill: var(--ink); }
+.leaflet-tooltip.zone-label { background: transparent; border: none; box-shadow: none; font-weight: 700; color: #222; }
