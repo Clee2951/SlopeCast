@@ -200,20 +200,10 @@ class ClaudeAPIError(RuntimeError):
     pass
 
 
-def call_claude_http(api_key: str, model: str, system: str, evidence: dict, max_tokens: int, timeout: float,
-                     workspace_id: Optional[str] = None) -> dict:
-    """POST to the Messages API with a forced tool call. Returns the tool input dict.
+_FORCED_TOOL_UNSUPPORTED: set = set()      # models that rejected tool_choice "tool" this run
 
-    Auth: `Authorization: Bearer <key>`. Keys not scoped to a workspace also need the
-    `anthropic-workspace-id` header (set ANTHROPIC_WORKSPACE_ID in .env)."""
-    body = {
-        "model": model,
-        "max_tokens": max_tokens,
-        "system": system,
-        "tools": [TOOL],
-        "tool_choice": {"type": "tool", "name": TOOL["name"]},
-        "messages": [{"role": "user", "content": "Evidence for the current assessment:\n" + json.dumps(evidence, indent=1)}],
-    }
+
+def _post(body: dict, api_key: str, workspace_id: Optional[str], timeout: float) -> dict:
     headers = {"Authorization": f"Bearer {api_key}", "anthropic-version": ANTHROPIC_VERSION,
                "content-type": "application/json"}
     if workspace_id:
@@ -221,7 +211,7 @@ def call_claude_http(api_key: str, model: str, system: str, evidence: dict, max_
     req = urllib.request.Request(ANTHROPIC_URL, data=json.dumps(body).encode(), method="POST", headers=headers)
     try:
         with urllib.request.urlopen(req, timeout=timeout) as r:
-            resp = json.loads(r.read().decode())
+            return json.loads(r.read().decode())
     except urllib.error.HTTPError as e:              # show the API's own explanation (bad key, workspace, model...)
         detail = e.read().decode(errors="replace")[:300]
         try:
@@ -229,10 +219,50 @@ def call_claude_http(api_key: str, model: str, system: str, evidence: dict, max_
         except (ValueError, KeyError, TypeError):
             pass
         raise ClaudeAPIError(f"HTTP {e.code}: {detail}") from None
+
+
+def _extract_answer(resp: dict) -> dict:
+    """The submit_assessment tool input; failing that, a JSON object in the text reply."""
     for block in resp.get("content", []):
         if block.get("type") == "tool_use" and block.get("name") == TOOL["name"]:
             return block["input"]
-    raise ValueError(f"no tool call in Claude response (stop_reason={resp.get('stop_reason')})")
+    text = "".join(b.get("text", "") for b in resp.get("content", []) if b.get("type") == "text")
+    start, end = text.find("{"), text.rfind("}")
+    if start != -1 and end > start:
+        try:
+            obj = json.loads(text[start:end + 1])
+            if isinstance(obj, dict) and "risk_level" in obj:
+                return obj
+        except ValueError:
+            pass
+    raise ValueError(f"no submit_assessment call in Claude response (stop_reason={resp.get('stop_reason')})")
+
+
+def call_claude_http(api_key: str, model: str, system: str, evidence: dict, max_tokens: int, timeout: float,
+                     workspace_id: Optional[str] = None) -> dict:
+    """POST to the Messages API asking for the submit_assessment tool. Returns the tool input dict.
+
+    Prefers a forced tool call (tool_choice "tool"). Some models reject forced tool choice;
+    then it retries with tool_choice "auto" plus an explicit instruction, and remembers
+    that for the rest of the run. Every answer is still validated in layer 3.
+
+    Auth: `Authorization: Bearer <key>`. Keys not scoped to a workspace also need the
+    `anthropic-workspace-id` header (set ANTHROPIC_WORKSPACE_ID in .env)."""
+    content = "Evidence for the current assessment:\n" + json.dumps(evidence, indent=1)
+    body = {"model": model, "max_tokens": max_tokens, "system": system, "tools": [TOOL],
+            "messages": [{"role": "user", "content": content}]}
+    if model not in _FORCED_TOOL_UNSUPPORTED:
+        try:
+            return _extract_answer(_post(dict(body, tool_choice={"type": "tool", "name": TOOL["name"]}),
+                                         api_key, workspace_id, timeout))
+        except ClaudeAPIError as e:
+            if "tool_choice" not in str(e):
+                raise
+            _FORCED_TOOL_UNSUPPORTED.add(model)       # fall through to auto mode
+    body["tool_choice"] = {"type": "auto"}
+    body["messages"] = [{"role": "user", "content": content + "\n\nRespond only by calling the "
+                         f"{TOOL['name']} tool once. Do not answer in plain text."}]
+    return _extract_answer(_post(body, api_key, workspace_id, timeout))
 
 
 # ================================================================ layer 3: checks
