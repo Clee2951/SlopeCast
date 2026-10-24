@@ -3,30 +3,60 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#EFEBE1">
 <title>SlopeCast</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 40%27%3E%3Crect width=%2740%27 height=%2740%27 rx=%278%27 fill=%27%23EFEBE1%27/%3E%3Cpath d=%27M4 31 L15 15 L22 22 L28 16 L36 31%27 fill=%27none%27 stroke=%27%2316181A%27 stroke-width=%272.4%27/%3E%3Cpath d=%27M19.5 18.5 L25 30%27 stroke=%27%23E2401B%27 stroke-width=%273.4%27 stroke-linecap=%27round%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Familjen+Grotesk:wght@400;500;600;700&family=Martian+Mono:wdth,wght@75..112.5,300..600&family=Noto+Sans+TC:wght@500;700;900&display=swap">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
 <link rel="stylesheet" href="/static/styles.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 </head>
 <body>
+<!-- shared fills: zones on the map, forecast rain, the unsafe part of the timeline -->
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="hatch-high" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
+      <rect width="8" height="8" fill="#E2401B" fill-opacity=".16"/><rect width="3" height="8" fill="#E2401B" fill-opacity=".62"/></pattern>
+    <pattern id="hatch-medium" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
+      <rect width="8" height="8" fill="#E39B12" fill-opacity=".12"/><rect width="2" height="8" fill="#E39B12" fill-opacity=".7"/></pattern>
+    <pattern id="hatch-rain" patternUnits="userSpaceOnUse" width="4" height="4" patternTransform="rotate(45)">
+      <rect width="4" height="4" fill="#24508A" fill-opacity=".18"/><rect width="1.6" height="4" fill="#24508A"/></pattern>
+    <pattern id="hatch-unsafe" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(-45)">
+      <rect width="2" height="6" fill="#E2401B" fill-opacity=".5"/></pattern>
+  </defs>
+</svg>
+
 <header class="topbar">
-  <div class="brand">SlopeCast</div>
-  <div id="site-name" class="muted"></div>
+  <a class="brand" href="/" aria-label="SlopeCast home">
+    <svg viewBox="0 0 40 40" width="30" height="30" aria-hidden="true">
+      <path d="M3 31 L15 15 L22 22 L28 16 L37 31" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M3 35 L37 35" stroke="currentColor" stroke-width="1" opacity=".35"/>
+      <path d="M19.5 18.5 L25 30" stroke="var(--vermilion)" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="19.5" cy="18.5" r="2.6" fill="var(--vermilion)"/>
+    </svg>
+    <span class="wordmark">Slope<b>Cast</b></span>
+  </a>
+  <div id="site-name" class="site-name"></div>
   <div class="spacer"></div>
-  <span id="mode-badge" class="badge">...</span>
-  <span id="site-clock" class="muted mono"></span>
-  <nav id="view-links"></nav>
+  <span id="mode-badge" class="badge">…</span>
+  <span id="site-clock" class="site-clock"></span>
+  <nav id="view-links" aria-label="Views"></nav>
 </header>
-<div id="offline-banner" class="offline hidden">Backend unreachable. Showing the last data received.</div>
-<main id="app"><p class="muted pad">Loading...</p></main>
+<div id="offline-banner" class="offline hidden" role="alert">Backend unreachable. Showing the last data received.</div>
+<main id="app"><p class="loading">Reading the slope…</p></main>
+<div id="toasts" class="toasts" aria-live="polite"></div>
 <script src="/static/api.js"></script>
 <script>
   // load the view named in ?view= (dashboard, committee, resident)
   (function () {
     const view = SC.param("view") || (SC.token() && SC.token().startsWith("resident-") ? "resident" : "dashboard");
     const allowed = { dashboard: 1, committee: 1, resident: 1 };
+    const v = allowed[view] ? view : "dashboard";
+    document.body.dataset.view = v;
     const s = document.createElement("script");
-    s.src = "/static/" + (allowed[view] ? view : "dashboard") + ".js";
+    s.src = "/static/" + v + ".js";
     document.body.appendChild(s);
     SC.renderNav(view);
   })();
